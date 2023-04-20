@@ -36,7 +36,7 @@ GITHUB: https://github.com/kyleschop/
 
 Contact Justinsemail12@yahoo.com
 Contact Justus
-Contact John
+Contact Johnn
 Contact Kyle
 
 ## License

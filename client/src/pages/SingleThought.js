@@ -1,28 +1,28 @@
-import React from 'react';
-
-// Import the `useParams()` hook
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
-
-import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
+import UpdateThoughtForm from '../components/UpdateThoughtForm';
+import Auth from '../utils/auth';
 
 const SingleThought = () => {
-  // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { thoughtId } = useParams();
-
   const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
-    // pass URL parameter
-    variables: { thoughtId: thoughtId },
+    variables: { thoughtId: parseInt(thoughtId) },
   });
-
   const thought = data?.thought || {};
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+
+  const handleUpdate = () => {
+    setShowUpdateForm(false);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
   }
+
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
@@ -51,6 +51,29 @@ const SingleThought = () => {
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <CommentForm thoughtId={thought._id} />
       </div>
+
+      {Auth.loggedIn() && (
+        <>
+          <hr />
+          <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+            {!showUpdateForm && (
+              <button
+                onClick={() => setShowUpdateForm(true)}
+                className="btn d-block w-100"
+              >
+                Edit Thought
+              </button>
+            )}
+            {showUpdateForm && (
+              <UpdateThoughtForm
+                thoughtId={thought._id}
+                initialText={thought.thoughtText}
+                onUpdated={handleUpdate}
+              />
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 };

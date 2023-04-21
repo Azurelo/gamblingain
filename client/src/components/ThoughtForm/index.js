@@ -44,7 +44,7 @@ const ThoughtForm = () => {
       setProfileImage(savedProfileImage);
     }
   }, []);
-
+// added profile picture option with an upload it also saves to local storage
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {

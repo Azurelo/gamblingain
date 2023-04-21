@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
@@ -9,7 +9,7 @@ import Auth from '../../utils/auth';
 
 const ThoughtForm = () => {
   const [thoughtText, setThoughtText] = useState('');
-
+  const [profileImage, setProfileImage] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
@@ -34,9 +34,29 @@ const ThoughtForm = () => {
           data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
         });
       }
-      
+
     },
+
   });
+  useEffect(() => {
+    const savedProfileImage = localStorage.getItem('profileImage');
+    if (savedProfileImage) {
+      setProfileImage(savedProfileImage);
+    }
+  }, []);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64ImageData = reader.result;
+        setProfileImage(base64ImageData);
+        localStorage.setItem('profileImage', base64ImageData);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -70,6 +90,12 @@ const ThoughtForm = () => {
 
       {Auth.loggedIn() ? (
         <>
+        {profileImage && (
+            <div className="profile-picture-container">
+              <img src={profileImage} alt="Profile" style={{ width: '150px', borderRadius: '50%' }} />
+            </div>
+          )}
+          <input type="file" accept="image/*" onChange={handleFileChange} />
           <p
             className={`m-0 ${
               characterCount === 280 || error ? 'text-danger' : ''

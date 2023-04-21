@@ -25,12 +25,16 @@ const ThoughtForm = () => {
         console.error(e);
       }
 
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
-      });
+      const data = cache.readQuery({ query: QUERY_ME });
+
+      if (data && data.me) {
+        const { me } = data;
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
+        });
+      }
+      
     },
   });
 
@@ -62,7 +66,7 @@ const ThoughtForm = () => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>Push your friends</h3>
 
       {Auth.loggedIn() ? (
         <>

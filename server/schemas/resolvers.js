@@ -81,6 +81,23 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    updateThought: async (parent, { _id, thoughtText }, context) => {
+      if (context.user) {
+        const updatedThought = await Thought.findOneAndUpdate(
+          { _id, thoughtAuthor: context.user.username },
+          { thoughtText }, // Change "text" to "thoughtText"
+          { new: true, runValidators: true }
+        );
+    
+        if (!updatedThought) {
+          throw new Error('No thought found with this id and username combination');
+        }
+    
+        return updatedThought;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
     removeThought: async (parent, { thoughtId }, context) => {
       if (context.user) {
         const thought = await Thought.findOneAndDelete({

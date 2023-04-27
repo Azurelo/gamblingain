@@ -14,7 +14,7 @@ Final project
 - <a href="#tests">Tests</a>
 
 ## Usage
-
+![Alt text](codding-picture.png)
 
 ## Contributors
 Justin 

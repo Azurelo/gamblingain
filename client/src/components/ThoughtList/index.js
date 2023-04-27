@@ -36,9 +36,15 @@ const ThoughtList = ({
                 </>
               )}
             </h4>
-            <div className="card-body bg-light p-2">
-              <p>{thought.thoughtText}</p>
-            </div>
+          <div className="card-body bg-light p-2">
+  <blockquote className="blockquote">
+    <p className="mb-0">{thought.thoughtText}</p>
+    <footer className="blockquote-footer">
+      {thought.thoughtAuthor} <br />
+      <cite title={thought.createdAt}>{thought.createdAt}</cite>
+    </footer>
+  </blockquote>
+</div>
             <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/thoughts/${thought._id}`}

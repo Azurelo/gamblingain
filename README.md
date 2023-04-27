@@ -1,8 +1,7 @@
 # gamblingain
 
-
 ## Description
-Final project
+Fitness Social Media App
 
 ## 📝 Table of Contents
 - <a href="#description">Description</a>
@@ -35,7 +34,7 @@ GITHUB: https://github.com/E11Evated/
 GITHUB: https://github.com/kyleschop/
 
 Contact Justinsemail12@yahoo.com
-Contact Justus
+Contact Justusschoppmann@yahoo.com
 Contact Johnn
 Contact Kyle
 

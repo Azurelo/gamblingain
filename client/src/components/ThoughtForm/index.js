@@ -86,7 +86,7 @@ const ThoughtForm = () => {
 
   return (
     <div>
-      <h3>Push your friends</h3>
+      <h3></h3>
 
       {Auth.loggedIn() ? (
         <>

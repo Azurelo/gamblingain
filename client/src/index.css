@@ -423,12 +423,12 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: hotpink;
   text-decoration: none;
 }
 
 a:hover {
-  color: #065b83;
+  color: #d9e9e8;
   text-decoration: underline;
 }
 
@@ -920,7 +920,7 @@ a:hover {
 
 /* BACKGROUND UTILS */
 .bg-primary {
-  background-color: #2d3e50 !important;
+  background-color: slategray !important;
 }
 
 .bg-info {
@@ -936,7 +936,7 @@ a:hover {
 }
 
 .bg-dark {
-  background-color: #1a1a1a !important;
+  background-color: slategray !important;
 }
 
 .bg-white {
@@ -1012,12 +1012,13 @@ a:hover {
 }
 
 .btn.btn-primary {
-  background-color: #2d3e50;
+  background-color: hotpink;
   color: #d9e9e8;
 }
 
 .btn.btn-primary:hover {
-  background-color: #57779a;
+  background-color: #d9e9e8;
+  color: hotpink;
 }
 
 .btn.btn-danger {
@@ -1030,25 +1031,27 @@ a:hover {
 }
 
 .btn.btn-info {
-  background-color: #1bbc9b;
+  background-color: hotpink;
   color: #ffffff;
 }
 
 .btn.btn-info:hover {
-  background-color: #31e1bd;
+  background-color: #d9e9e8;
+  color: hotpink;
 }
 
 .btn.btn-light {
   background-color: #d9e9e8;
-  color: #1a1a1a;
+  color: hotpink;
 }
 
 .btn.btn-light:hover {
-  background-color: #84b8b4;
+  background-color: hotpink;
+  color: white;
 }
 
 .btn.btn-dark {
-  background-color: #1a1a1a;
+  background-color: hotpink;
   color: #d9e9e8;
 }
 
@@ -1086,6 +1089,7 @@ a:hover {
 .card {
   border: 1px solid #1a1a1a;
   margin-bottom: 1rem;
+  border-radius: 0.3rem;
 }
 
 .card .card-header {

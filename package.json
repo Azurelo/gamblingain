@@ -20,6 +20,7 @@
     "@protobufjs/aspromise": "^1.1.2",
     "@protobufjs/base64": "^1.1.2",
     "@protobufjs/eventemitter": "^1.1.0",
+    "dotenv": "^16.0.3",
     "protobufjs": "^7.2.3"
   }
 }

@@ -31,7 +31,7 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           <Link className="text-light" to="/">
-            <h1 className="m-0">Encourage Friends</h1>
+          <h1 className="m-0" style={{ color: "hotpink" }}>Encourage Friends</h1>
           </Link>
           
           <p className="m-0">Get into the best shape of your life.</p>
